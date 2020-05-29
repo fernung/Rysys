@@ -13,7 +13,7 @@ namespace Rysys.Client
 
         public static void Add(IGameState screen)
         {
-            Screens.Push(screen);
+            Screens.Push(screen); 
             Current.Initialize();
             Current.LoadContent(Settings.Content);
         }

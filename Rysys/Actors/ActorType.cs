@@ -2,6 +2,7 @@
 {
     public enum ActorType
     {
+        Pixel,
         Player,
         Seeker,
         Wanderer,
