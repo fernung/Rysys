@@ -1,0 +1,51 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Rysys.ECS;
+using Rysys.Graphics;
+using Rysys.Physics;
+
+namespace Rysys.Actors
+{
+    public interface IActor : IComponent
+    {
+        ActorType Type { get; }
+        bool Alive { get; set; }
+
+        void Draw(SpriteBatch spriteBatch);
+    }
+    public class Actor : Component, IActor
+    {
+        public ActorType Type { get; protected set; }
+        public bool Alive { get; set; }
+
+        public Actor(ActorType type) : base()
+        {
+            Type = type;
+            Alive = true;
+        }
+
+        public override void Initialize()
+        {
+            Entity.Component(new Transform());
+            Entity.Component(new Sprite(TextureManager.Load(Type)));
+            Entity.Component
+            (
+                new Render(Entity.Component<Sprite>(), 
+                Entity.Component<Transform>())
+            );
+
+            Entity.Component<Sprite>().Origin = Entity.Component<Sprite>().Size / 2;
+
+            base.Initialize();
+        }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            Entity.Component<Render>().Draw(spriteBatch);
+        }
+    }
+}
