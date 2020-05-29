@@ -1,10 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
+using Rysys.Extensions;
 using System;
 
 namespace Rysys.Utilities
 {
     public static class ColorUtility
     {
+        private static readonly Random Random = new Random();
+
+        public static Color RandomColor()
+        {
+            float hue1 = Random.NextFloat(0, 6);
+            float hue2 = (hue1 + Random.NextFloat(0, 2)) % 6.0f;
+            Color color1 = FromHSV(hue1, 0.5f, 1);
+            Color color2 = FromHSV(hue2, 0.5f, 1);
+            return Color.Lerp(color1, color2, Random.NextFloat(0, 1));
+        }
         public static Color FromHSV(float hue, float saturation, float value)
         {
             if (hue == 0 && saturation == 0)

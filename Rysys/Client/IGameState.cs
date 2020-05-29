@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Rysys.ECS;
 using Rysys.Graphics;
 using Rysys.Particles;
+using Rysys.Physics;
 using System.Collections.Generic;
 
 namespace Rysys.Client

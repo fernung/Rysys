@@ -50,12 +50,16 @@
     <Compile Include="Client\IGameState.cs" />
     <Compile Include="ECS\IComponent.cs" />
     <Compile Include="ECS\IEntity.cs" />
+    <Compile Include="Graphics\TextureType.cs" />
     <Compile Include="Particles\IParticle.cs" />
     <Compile Include="Particles\ParticleContainer.cs" />
     <Compile Include="Particles\ParticleManager.cs" />
     <Compile Include="Particles\ParticleState.cs" />
     <Compile Include="Particles\ParticleType.cs" />
+    <Compile Include="Physics\IGrid.cs" />
     <Compile Include="Physics\IKinematics.cs" />
+    <Compile Include="Physics\IPointMass.cs" />
+    <Compile Include="Physics\ISpring.cs" />
     <Compile Include="Utilities\ColorUtility.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\SpriteBatchExtensions.cs" />

@@ -2,13 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Rysys.ECS;
 using Rysys.Extensions;
-using Rysys.Graphics;
-using Rysys.Physics;
+using Rysys.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rysys.Particles
 {
@@ -18,7 +13,7 @@ namespace Rysys.Particles
         ParticleContainer Particles { get; set; }
 
         void Create(Texture2D texture, Vector2 position, Color tint, float duration, Vector2 scale, ParticleState state, float theta);
-        void Create(Texture2D texture, Vector2 position, Color tint, float duration, int amount, ParticleType type, float theta);
+        void Create(Texture2D texture, Vector2 position, float duration, int amount, ParticleType type, float theta);
         void Draw(SpriteBatch spriteBatch);
     }
     public class ParticleManager : Component, IParticleManager
@@ -57,13 +52,17 @@ namespace Rysys.Particles
 
             p.Set(texture, position, tint, duration, scale, state, theta);
         }
-        public void Create(Texture2D texture, Vector2 position, Color tint, float duration, int amount = DefaultParticleAmount, ParticleType type = ParticleType.None, float theta = 0.0f)
+        public void Create(Texture2D texture, Vector2 position, float duration, int amount = DefaultParticleAmount, ParticleType type = ParticleType.None, float theta = 0.0f)
         {
+            float speed;
+            Color tint;
             for (int i = 0; i < amount; i++)
             {
+                speed = 18f * (1.0f - 1 / Random.NextFloat(1.0f, 10.0f));
+                tint = Color.Lerp(ColorUtility.RandomColor(), ColorUtility.RandomColor(), Random.NextFloat(0.0f, 1.0f));
                 Create(texture, position, tint, duration, Vector2.One, new ParticleState
                 {
-                    Velocity = Random.NextVector2(0, 10),
+                    Velocity = Random.NextVector2(speed, speed),
                     Type = type,
                     LengthMultiplier = 1.0f
                 }, theta);

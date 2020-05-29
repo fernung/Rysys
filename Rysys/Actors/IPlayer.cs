@@ -31,7 +31,6 @@ namespace Rysys.Actors
             AddComponent(new MouseInput());
             AddComponent(new KeyboardInput());
             AddComponent(new GamePadInput(Index));
-            AddComponent(new ParticleManager(1024 * 10, ParticleState.Update));
         }
 
         public override void Update(GameTime gameTime)
@@ -40,14 +39,6 @@ namespace Rysys.Actors
 
             Vector2 input = GetComponent<GamePadInput>().LeftStickDirection() * GetComponent<Kinematics>().Speed;
             GetComponent<Kinematics>().Accelerate(input.X, input.Y);
-
-            if(GetComponent<GamePadInput>().Pressed(Buttons.LeftTrigger) ||
-                GetComponent<GamePadInput>().Pressed(Buttons.RightTrigger))
-            {
-                GetComponent<ParticleManager>().Create(TextureManager.Pixel, GetComponent<Kinematics>().Position, Color.White, 120);
-            }
-
-            GetComponent<ParticleManager>().Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

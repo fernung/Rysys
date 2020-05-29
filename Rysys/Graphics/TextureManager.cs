@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Rysys.Actors;
 
 namespace Rysys.Graphics
 {
@@ -30,17 +29,5 @@ namespace Rysys.Graphics
             Laser = Load(TextureType.Laser);
             Glow = Load(TextureType.Glow);
         }
-    }
-
-    public enum TextureType
-    {
-        Pixel,
-        Player,
-        Seeker,
-        Wanderer,
-        BlackHole,
-        Bullet,
-        Laser,
-        Glow
     }
 }
