@@ -8,17 +8,17 @@ namespace Rysys.Actors
 {
     public interface IActor : IComponent
     {
-        ActorType Type { get; }
+        TextureType Type { get; }
         bool Alive { get; set; }
 
         void Draw(SpriteBatch spriteBatch);
     }
     public class Actor : Component, IActor
     {
-        public ActorType Type { get; protected set; }
+        public TextureType Type { get; protected set; }
         public bool Alive { get; set; }
 
-        public Actor(ActorType type) : base()
+        public Actor(TextureType type) : base()
         {
             Type = type;
             Alive = true;

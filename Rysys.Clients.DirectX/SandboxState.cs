@@ -19,8 +19,8 @@ namespace Rysys.Clients.DirectX
 
         public SandboxState() : base() 
         {
-            player1 = new Player(ActorType.Player, PlayerIndex.One);
-            player2 = new Player(ActorType.Player, PlayerIndex.Two);
+            player1 = new Player(TextureType.Player, PlayerIndex.One);
+            player2 = new Player(TextureType.Player, PlayerIndex.Two);
 
             Components.Add(player1);
             Components.Add(player2);

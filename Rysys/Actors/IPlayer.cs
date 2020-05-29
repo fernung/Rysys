@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Rysys.Graphics;
 using Rysys.Input;
+using Rysys.Particles;
 using Rysys.Physics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using KeyboardInput = Rysys.Input.KeyboardInput;
 
 namespace Rysys.Actors
 {
@@ -18,7 +19,7 @@ namespace Rysys.Actors
     {
         public PlayerIndex Index { get; protected set; }
 
-        public Player(ActorType type, PlayerIndex index) : base(type)
+        public Player(TextureType type, PlayerIndex index) : base(type)
         {
             Index = index;
         }
@@ -30,6 +31,7 @@ namespace Rysys.Actors
             AddComponent(new MouseInput());
             AddComponent(new KeyboardInput());
             AddComponent(new GamePadInput(Index));
+            AddComponent(new ParticleManager(1024 * 10, ParticleState.Update));
         }
 
         public override void Update(GameTime gameTime)
@@ -38,6 +40,19 @@ namespace Rysys.Actors
 
             Vector2 input = GetComponent<GamePadInput>().LeftStickDirection() * GetComponent<Kinematics>().Speed;
             GetComponent<Kinematics>().Accelerate(input.X, input.Y);
+
+            if(GetComponent<GamePadInput>().Pressed(Buttons.LeftTrigger) ||
+                GetComponent<GamePadInput>().Pressed(Buttons.RightTrigger))
+            {
+                GetComponent<ParticleManager>().Create(TextureManager.Pixel, GetComponent<Kinematics>().Position, Color.White, 120);
+            }
+
+            GetComponent<ParticleManager>().Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
         }
     }
 }

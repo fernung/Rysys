@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Rysys.ECS;
 using Rysys.Graphics;
+using Rysys.Particles;
 using System.Collections.Generic;
 
 namespace Rysys.Client
@@ -53,6 +54,10 @@ namespace Rysys.Client
                 if(component.HasComponent<Render>())
                 {
                     component.GetComponent<Render>().Draw(spriteBatch);
+                }
+                if(component.HasComponent<ParticleManager>())
+                {
+                    component.GetComponent<ParticleManager>().Draw(spriteBatch);
                 }
             }
             spriteBatch.End();

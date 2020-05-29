@@ -41,7 +41,7 @@ namespace Rysys.Physics
 
 
         public Kinematics() : this(Vector2.Zero, DefaultSpeed) { }
-        public Kinematics(Vector2 position, float speed) : base(position)
+        public Kinematics(Vector2 position, float speed) : base(position, Vector2.One)
         {
             Friction = DefaultFriction;
             Speed = speed;

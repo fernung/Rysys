@@ -35,7 +35,7 @@ namespace Rysys.Graphics
             Layer = 0;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw
             (
