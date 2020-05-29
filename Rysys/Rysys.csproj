@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Actors\IActor.cs" />
     <Compile Include="Actors\ActorType.cs" />
+    <Compile Include="Actors\IPlayer.cs" />
     <Compile Include="Client\BaseClient.cs" />
     <Compile Include="Client\GameStateManager.cs" />
     <Compile Include="Client\IGameState.cs" />
