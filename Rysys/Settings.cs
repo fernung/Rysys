@@ -18,6 +18,8 @@ namespace Rysys
             get => Graphics.GraphicsDevice.Viewport.Height;
             set => Graphics.PreferredBackBufferHeight = value;
         }
+        public static Vector2 ScreenSize 
+        { get => new Vector2(Graphics.GraphicsDevice.Viewport.Width, Graphics.GraphicsDevice.Viewport.Height); }
         public static Rectangle Bounds
         {
             get => Graphics.GraphicsDevice.Viewport.Bounds;

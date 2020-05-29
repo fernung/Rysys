@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Rysys.Graphics;
 
 namespace Rysys.Client
 {
@@ -15,6 +16,7 @@ namespace Rysys.Client
             _state = state;
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
             Settings.Initialize(Content, Graphics);
         }
 
@@ -27,6 +29,7 @@ namespace Rysys.Client
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            TextureManager.LoadContent();
             GameStateManager.Add(_state);
         }
 

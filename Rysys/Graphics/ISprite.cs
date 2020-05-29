@@ -12,9 +12,7 @@ namespace Rysys.Graphics
         Vector2 Origin { get; set; }
         Rectangle Source { get; set; }
         Color Color { get; set; }
-        float Orientation { get; set; }
         float Depth { get; set; }
-        int Scale { get; set; }
 
         void LoadContent(string path);
         void LoadContent(Texture2D texture);
@@ -28,9 +26,7 @@ namespace Rysys.Graphics
         public Vector2 Origin { get; set; }
         public Rectangle Source { get; set; }
         public Color Color { get; set; }
-        public float Orientation { get; set; }
         public float Depth { get; set; }
-        public int Scale { get; set; }
 
         public Sprite(string path) : base() { LoadContent(path); }
         public Sprite(Texture2D texture) : base() { LoadContent(texture); }
@@ -50,9 +46,7 @@ namespace Rysys.Graphics
             Origin = new Vector2(0, 0);
             Source = new Rectangle(0, 0, Texture.Width, Texture.Height);
             Color = Color.White;
-            Orientation = 0.0f;
             Depth = 0.0f;
-            Scale = 1;
         }
     }
 }

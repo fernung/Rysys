@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Rysys.Actors;
 
 namespace Rysys.Graphics
@@ -8,11 +9,23 @@ namespace Rysys.Graphics
         public static Texture2D Load(ActorType actor) => Load($"Textures\\{actor.ToString()}");
         public static Texture2D Load(string path) => Settings.Content.Load<Texture2D>(path);
 
-        public static Texture2D Pixel { get; private set; } = Load(ActorType.Pixel);
-        public static Texture2D Player { get; private set; } = Load(ActorType.Player);
-        public static Texture2D Seeker { get; private set; } = Load(ActorType.Seeker);
-        public static Texture2D Wanderer { get; private set; } = Load(ActorType.Wanderer);
-        public static Texture2D BlackHole { get; private set; } = Load(ActorType.BlackHole);
-        public static Texture2D Bullet { get; private set; } = Load(ActorType.Bullet);
+        public static Texture2D Pixel { get; private set; }
+        public static Texture2D Player { get; private set; }
+        public static Texture2D Seeker { get; private set; }
+        public static Texture2D Wanderer { get; private set; }
+        public static Texture2D BlackHole { get; private set; }
+        public static Texture2D Bullet { get; private set; }
+
+        public static void LoadContent()
+        {
+            Pixel = new Texture2D(Settings.Graphics.GraphicsDevice, 1, 1);
+            Pixel.SetData(new[] { Color.White });
+            Player = Load(ActorType.Player);
+            Seeker = Load(ActorType.Seeker);
+            Wanderer = Load(ActorType.Wanderer);
+            BlackHole = Load(ActorType.BlackHole);
+            Bullet = Load(ActorType.Bullet);
+            
+        }
     }
 }

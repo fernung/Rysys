@@ -26,12 +26,12 @@ namespace Rysys.Actors
 
         public override void Initialize()
         {
-            Entity.Component(new Transform());
+            Entity.Component(new Kinematics());
             Entity.Component(new Sprite(TextureManager.Load(Type)));
             Entity.Component
             (
                 new Render(Entity.Component<Sprite>(), 
-                Entity.Component<Transform>())
+                Entity.Component<Kinematics>())
             );
 
             Entity.Component<Sprite>().Origin = Entity.Component<Sprite>().Size / 2;
@@ -41,6 +41,13 @@ namespace Rysys.Actors
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            Entity.Component<Kinematics>().Position = Vector2.Clamp
+            (
+                Entity.Component<Kinematics>().Position,
+                Entity.Component<Sprite>().Size / 2,
+                Settings.ScreenSize - Entity.Component<Sprite>().Size / 2
+            );
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

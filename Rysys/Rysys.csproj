@@ -49,6 +49,7 @@
     <Compile Include="Client\IGameState.cs" />
     <Compile Include="ECS\IComponent.cs" />
     <Compile Include="ECS\IEntity.cs" />
+    <Compile Include="Physics\IKinematics.cs" />
     <Compile Include="Utilities\ColorUtility.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\SpriteBatchExtensions.cs" />

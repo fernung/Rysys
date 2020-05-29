@@ -42,10 +42,10 @@ namespace Rysys.Graphics
                 Sprite.Texture, 
                 Transform.Position, 
                 Sprite.Bounds, 
-                Sprite.Color, 
-                Sprite.Orientation, 
+                Sprite.Color,
+                Transform.Orientation, 
                 Sprite.Origin, 
-                Sprite.Scale, 
+                Transform.Scale, 
                 Effect, 
                 Layer
             );
