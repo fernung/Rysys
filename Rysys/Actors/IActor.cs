@@ -41,13 +41,6 @@ namespace Rysys.Actors
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            Entity.Component<Kinematics>().Position = Vector2.Clamp
-            (
-                Entity.Component<Kinematics>().Position,
-                Entity.Component<Sprite>().Size * 2,
-                Settings.WorldSize - Entity.Component<Sprite>().Size * 2
-            );
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

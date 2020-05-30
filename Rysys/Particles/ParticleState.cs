@@ -27,7 +27,7 @@ namespace Rysys.Particles
         public static void Update(IParticle p)
         {
             Vector2 velocity = p.State.Velocity;
-            Vector2 position, size = Settings.ScreenSize;
+            Vector2 position, size = Settings.WorldSize;
             float speed, alpha;
 
             p.Position += velocity;

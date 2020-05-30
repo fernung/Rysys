@@ -12,7 +12,7 @@ namespace Rysys.Actors
 {
     public interface IPlayer : IActor
     {
-
+        PlayerIndex Index { get; }
     }
 
     public class Player : Actor, IPlayer
@@ -39,6 +39,13 @@ namespace Rysys.Actors
 
             Vector2 input = GetComponent<GamePadInput>().LeftStickDirection() * GetComponent<Kinematics>().Speed;
             GetComponent<Kinematics>().Accelerate(input.X, input.Y);
+
+            GetComponent<Kinematics>().Position = Vector2.Clamp
+            (
+                GetComponent<Kinematics>().Position,
+                GetComponent<Sprite>().Size * 2,
+                Settings.WorldSize - GetComponent<Sprite>().Size * 2
+            );
         }
 
         public override void Draw(SpriteBatch spriteBatch)

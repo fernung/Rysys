@@ -20,6 +20,7 @@ namespace Rysys.Client
         Vector2 Origin { get; set; }
         float X { get; set; }
         float Y { get; set; }
+        Vector2 Size { get; set; }
 
         void UpdateMatrices();
         Vector2 ScreenToWorld(Vector2 position);
@@ -112,17 +113,25 @@ namespace Rysys.Client
                 _hasChanged = true;
             }
         }
+        public Vector2 Size { get; set; }
 
-        public Camera2D() { }
+        public Camera2D(int width, int height) : 
+            this(new Vector2(width, height)) { }
+        public Camera2D(Viewport viewport) : 
+            this(new Vector2(viewport.Width, viewport.Height)) { }
+        public Camera2D(Vector2 size) : base()
+        {
+            Size = size;
+        }
 
         public void UpdateMatrices()
         {
-            var size = new Vector2(Settings.Viewport.Width, Settings.Viewport.Height);
+            var size = Size / 2;
             Position = Vector2.Clamp
             (
                 Position,
-                size / 2,
-                Settings.WorldSize - size / 2
+                size,
+                Settings.WorldSize - size
             );
 
             var positionTranslationMatrix = Matrix.CreateTranslation(new Vector3()
@@ -150,7 +159,6 @@ namespace Rysys.Client
 
             _hasChanged = false;
         }
-
         public Vector2 ScreenToWorld(Vector2 position) => Vector2.Transform(position, InverseMatrix);
         public Vector2 WorldToScreen(Vector2 position) => Vector2.Transform(position, TransformationMatrix);
     }

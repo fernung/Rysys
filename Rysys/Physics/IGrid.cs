@@ -161,7 +161,7 @@ namespace Rysys.Physics
         public Vector2 ToVector2(Vector3 v)
         {
             float factor = (v.Z + 2000) / 2000;
-            Vector2 size = Settings.ScreenSize;
+            Vector2 size = Settings.WorldSize;
             return (new Vector2(v.X, v.Y) - size / 2.0f) * factor + size / 2;
         }
     }
