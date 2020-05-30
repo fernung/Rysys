@@ -49,7 +49,7 @@ namespace Rysys.Client
         }
         public virtual void Draw(SpriteBatch spriteBatch) 
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
             foreach (var component in Components)
             {
                 if(component.HasComponent<Render>())

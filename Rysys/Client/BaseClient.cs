@@ -17,11 +17,15 @@ namespace Rysys.Client
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            Settings.Initialize(Content, Graphics);
+            
         }
 
         protected override void Initialize()
         {
+            Settings.Initialize(Content, Graphics);
+            Settings.Width = Settings.DefaultScreenWidth;
+            Settings.Height = Settings.DefaultScreenHeight;
+            Graphics.ApplyChanges();
             base.Initialize();
         }
 

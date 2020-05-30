@@ -45,8 +45,8 @@ namespace Rysys.Actors
             Entity.Component<Kinematics>().Position = Vector2.Clamp
             (
                 Entity.Component<Kinematics>().Position,
-                Entity.Component<Sprite>().Size / 2,
-                Settings.ScreenSize - Entity.Component<Sprite>().Size / 2
+                Entity.Component<Sprite>().Size * 2,
+                Settings.WorldSize - Entity.Component<Sprite>().Size * 2
             );
         }
 
